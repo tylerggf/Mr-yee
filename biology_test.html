@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Biology Test - 50 Questions</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* Component Styles */
+        .container, .poster {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 20px auto;
+        }
+
+        .container { max-width: 800px; }
+
+        .poster {
+            display: none;
+            max-width: 11in;
+            min-height: 17in;
+            background-color: #fdfdfd;
+            border: 1px solid #ccc;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1, h2 { text-align: center; margin-bottom: 20px; padding-bottom: 10px; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #27ae60; }
+        h2 { color: #0056b3; border-bottom: 3px solid #0056b3; font-size: 2.5em; }
+        h3 { color: #007bff; font-size: 1.8em; margin-top: 30px; }
+
+        .question-block { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .question-text { font-weight: bold; font-size: 1.1em; margin-bottom: 10px; }
+        .options label { display: block; padding: 8px; cursor: pointer; transition: background 0.2s; border-radius: 4px; }
+        .options label:hover { background-color: #e8f5e9; }
+        input[type="radio"] { margin-right: 10px; }
+
+        .btn {
+            display: block; width: 100%; max-width: 300px; margin: 20px auto; padding: 15px;
+            border: none; border-radius: 5px; font-size: 1.1em; cursor: pointer;
+            text-align: center; color: white; transition: background 0.3s;
+        }
+        .btn-submit { background-color: #27ae60; max-width: 100%; font-size: 1.2em; }
+        .btn-submit:hover { background-color: #219150; }
+        .btn-blue { background-color: #007bff; }
+        .btn-blue:hover { background-color: #0056b3; }
+        .btn-orange { background-color: #e67e22; }
+        .btn-orange:hover { background-color: #d35400; }
+        .btn-red { background-color: #c0392b; }
+        .btn-red:hover { background-color: #a93226; }
+        .btn-gray { background-color: #7f8c8d; }
+
+        .visual-box {
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 20px 0;
+            padding: 15px;
+            text-align: center;
+        }
+
+        #result {
+            margin-top: 20px; padding: 20px; border-radius: 5px; display: none;
+            text-align: center; font-size: 1.3em; font-weight: bold;
+        }
+        .correct-answer { color: #27ae60; }
+        .wrong-answer { color: #e74c3c; }
+        .reflection { background-color: #e8f4f8; padding: 20px; border-left: 5px solid #007bff; }
+    </style>
+</head>
+<body>
+
+<div id="quiz-section" class="container">
+    <h1>Biology Proficiency Test</h1>
+    <form id="quiz-form">
+        <div id="questions-container"></div>
+        <button type="button" class="btn btn-submit" onclick="calculateScore()">Submit Test</button>
+    </form>
+    <div id="result"></div>
+</div>
+
+<div id="success-section" class="container" style="display:none;">
+    <div style="text-align: center; padding: 40px;">
+        <h1 style="color: #27ae60;">Mission Accomplished</h1>
+        <p style="font-size: 1.6em; margin: 30px 0; font-weight: bold; color: #2c3e50; line-height: 1.4;">
+            hey you did it Mr Yee so here is my project or should i say projects
+        </p>
+        <p id="final-score-display" style="font-size: 1.2em; color: #333;"></p>
+        <button class="btn btn-submit" onclick="location.reload()">Restart Test</button>
+        <button class="btn btn-blue" onclick="showSection('roller-coaster-poster')">View Tyler Robinsons Project</button>
+    </div>
+</div>
+
+<div id="roller-coaster-poster" class="poster">
+    <h2>The Physics of Thrills: A Roller Coaster's Energy Journey</h2>
+
+    <h3>Introduction</h3>
+    <p>
+        Roller coasters are engineering marvels that harness the fundamental principles of physics to create exhilarating experiences. From the initial climb to the final brake, every movement is a dance between different forms of energy, governed by immutable laws of the universe. Understanding these principles allows us to appreciate the intricate design and the sheer power involved in these thrilling rides.
+    </p>
+
+    <!-- Visual 1: Track Diagram -->
+    <div class="visual-box">
+        <svg width="400" height="150" viewBox="0 0 400 150">
+            <path d="M 10 130 Q 100 10 150 50 T 250 120 T 350 40" stroke="#333" fill="transparent" stroke-width="4"/>
+            <circle cx="95" cy="25" r="8" fill="red" />
+            <text x="70" y="15" font-size="12">Max GPE</text>
+            <circle cx="250" cy="120" r="8" fill="green" />
+            <text x="230" y="145" font-size="12">Max KE</text>
+        </svg>
+        <p><em>Visual 1: Potential vs. Kinetic Energy locations on a standard track.</em></p>
+    </div>
+
+    <h3>Energy Types</h3>
+    <ul>
+        <li><strong>Gravitational Potential Energy (GPE):</strong> This is stored energy an object possesses due to its position in a gravitational field. On a roller coaster, GPE is maximized at the highest points, such as the top of the first lift hill.</li>
+        <li><strong>Kinetic Energy (KE):</strong> This is the energy of motion. As the roller coaster moves, its kinetic energy increases with its speed. KE is typically maximized at the lowest points of the track where the coaster achieves its highest velocities.</li>
+        <li><strong>Thermal Energy:</strong> While not directly contributing to the ride's thrill, thermal energy is generated due to dissipative forces like friction (between the wheels and track, and air resistance). This energy represents the "loss" of mechanical energy from the system, but it is crucial for understanding the overall energy balance.</li>
+    </ul>
+
+    <!-- Visual 2: Energy Bar Chart -->
+    <div class="visual-box">
+        <svg width="300" height="150">
+            <rect x="50" y="20" width="40" height="100" fill="#3498db" />
+            <rect x="150" y="70" width="40" height="50" fill="#2ecc71" />
+            <rect x="250" y="100" width="40" height="20" fill="#e74c3c" />
+            <text x="50" y="135" font-size="10">GPE</text>
+            <text x="150" y="135" font-size="10">KE</text>
+            <text x="250" y="135" font-size="10">Heat</text>
+        </svg>
+        <p><em>Visual 2: Energy distribution during a mid-course hill.</em></p>
+    </div>
+
+    <h3>Energy Transformations</h3>
+    <ul>
+        <li><strong>Lift Hill Ascent:</strong> Electrical energy (from motors) is converted into Gravitational Potential Energy as the coaster cars are pulled to the highest point.</li>
+        <li><strong>First Drop:</strong> At the peak, GPE is at its maximum. As the coaster plunges down, this GPE is rapidly transformed into Kinetic Energy, causing a dramatic increase in speed.</li>
+        <li><strong>Loops and Hills:</strong> Throughout the ride, there's a continuous interconversion between Kinetic Energy and Gravitational Potential Energy. As the coaster climbs a hill or loop, KE is converted back into GPE. As it descends, GPE is converted back into KE.</li>
+        <li><strong>Braking Zones:</strong> When the ride concludes, the coaster's Kinetic Energy is converted into Thermal Energy through friction brakes, bringing the cars to a safe stop.</li>
+    </ul>
+
+    <!-- Visual 3: Transformation Flow -->
+    <div class="visual-box">
+        <svg width="400" height="60">
+            <text x="10" y="35" font-weight="bold">Electrical</text>
+            <text x="90" y="35">➔</text>
+            <text x="120" y="35" font-weight="bold">Potential</text>
+            <text x="210" y="35">➔</text>
+            <text x="240" y="35" font-weight="bold">Kinetic</text>
+        </svg>
+        <p><em>Visual 3: The primary energy flow of a roller coaster.</em></p>
+    </div>
+
+    <h3>Law of Conservation of Energy</h3>
+    <p>
+        The Law of Conservation of Energy states that energy cannot be created or destroyed, only transformed from one form to another. In an ideal roller coaster system (without friction or air resistance), the total mechanical energy (the sum of GPE and KE) would remain constant. However, in reality, some mechanical energy is always converted into thermal energy due to resistive forces. Despite this conversion, the total energy of the entire system (mechanical energy + thermal energy) remains constant and is conserved.
+    </p>
+
+    <!-- Visual 4: Conservation Diagram -->
+    <div class="visual-box">
+        <svg width="300" height="100">
+            <circle cx="150" cy="50" r="40" fill="none" stroke="#2c3e50" stroke-width="2" />
+            <text x="125" y="55" font-weight="bold">TOTAL</text>
+            <path d="M 150 10 L 150 90" stroke="#2c3e50" />
+            <text x="115" y="85">GPE</text>
+            <text x="165" y="85">KE</text>
+        </svg>
+        <p><em>Visual 4: Total mechanical energy remains constant in an isolated system.</em></p>
+    </div>
+
+    <h3>Complicated Physics Calculation: Speed at the Bottom of a Drop</h3>
+    <p>Let's calculate the theoretical speed of a roller coaster at the bottom of its first drop, assuming it starts from rest at the top and neglecting friction and air resistance for simplicity.</p>
+    <ul>
+        <li><strong>Given:</strong></li>
+        <ul>
+            <li>Initial Height (h₁) = 50 meters</li>
+            <li>Initial Speed (v₁) = 0 m/s (starts from rest)</li>
+            <li>Acceleration due to gravity (g) = 9.8 m/s²</li>
+            <li>Final Height (h₂) = 0 meters (bottom of the drop)</li>
+        </ul>
+        <li><strong>Using the Law of Conservation of Mechanical Energy (KE₁ + GPE₁ = KE₂ + GPE₂):</strong></li>
+        <li>(1/2)mv₁² + mgh₁ = (1/2)mv₂² + mgh₂</li>
+        <li>Since v₁ = 0 and h₂ = 0, the equation simplifies to:</li>
+        <li>mgh₁ = (1/2)mv₂²</li>
+        <li>We can cancel out the mass (m) from both sides:</li>
+        <li>gh₁ = (1/2)v₂²</li>
+        <li>Rearranging to solve for v₂:</li>
+        <li>v₂² = 2gh₁</li>
+        <li>v₂ = &radic;(2gh₁)</li>
+        <li><strong>Calculation:</strong></li>
+        <li>v₂ = &radic;(2 * 9.8 m/s² * 50 m)</li>
+        <li>v₂ = &radic;(980 m²/s²)</li>
+        <li>v₂ &asymp; 31.3 m/s</li>
+        <li>This is approximately 112.7 kilometers per hour (km/h).</li>
+    </ul>
+
+    <!-- Visual 5: Free Body Diagram -->
+    <div class="visual-box">
+        <svg width="200" height="150">
+            <rect x="75" y="60" width="50" height="30" fill="#95a5a6" />
+            <line x1="100" y1="75" x2="100" y2="25" stroke="blue" stroke-width="2" marker-end="url(#arrow)" />
+            <line x1="100" y1="75" x2="100" y2="125" stroke="red" stroke-width="2" marker-end="url(#arrow)" />
+            <text x="110" y="35" fill="blue">Normal Force</text>
+            <text x="110" y="120" fill="red">Gravity</text>
+            <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#000" />
+                </marker>
+            </defs>
+        </svg>
+        <p><em>Visual 5: Forces acting on the coaster at the bottom of a drop.</em></p>
+    </div>
+
+    <h3>Reflection</h3>
+    <p style="background-color: #e8f4f8; padding: 20px; border-left: 5px solid #007bff;">
+        <strong>The most interesting thing I learned:</strong> I found it fascinating that the mass of the roller coaster actually cancels out when calculating final speed (v = √(2gh)). This means that, in a world without friction, a heavy train and a light train would reach the exact same speed at the bottom of the hill. It really changed how I view "heavy" objects falling; it's the height and gravity that dictate the speed, not the weight of the passengers!
+    </p>
+
+    <h3>Sources</h3>
+    <ul style="font-size: 0.9em; color: #666;">
+        <li>The Physics Classroom: <em>Energy Transformation on a Roller Coaster</em> (physicsclassroom.com)</li>
+        <li>NASA Science: <em>What Is Energy?</em> (science.nasa.gov)</li>
+    </ul>
+
+    <button class="poster-button" style="background-color: #d35400;" onclick="showEnergyPoster()">Next Project</button>
+    <button class="btn btn-orange" onclick="showSection('roller-coaster-poster-2')">Next Project</button>
+    <button class="btn btn-gray" onclick="showSection('quiz-section')">Back to Quiz</button>
+</div>
+
+<div id="roller-coaster-poster-2" class="poster">
+    <h2 class="poster-header-2">Roller Coaster Energy: Transformation & Conservation</h2>
+    
+    <h3>Introduction</h3>
+    <p>
+        Energy is the currency of the universe, and nowhere is this more visible than on a roller coaster. This project explores how mechanical energy is stored, spent, and conserved as a coaster navigates complex tracks, hills, and loops.
+    </p>
+
+    <!-- Visual 1: Energy vs Position -->
+    <div class="visual-box">
+        <svg width="400" height="180">
+            <polyline points="0,150 100,20 200,140 300,80 400,160" fill="none" stroke="#2980b9" stroke-width="3" />
+            <text x="80" y="15" font-size="12" fill="#c0392b">High GPE / Low KE</text>
+            <text x="180" y="155" font-size="12" fill="#27ae60">Low GPE / High KE</text>
+            <circle cx="100" cy="20" r="5" fill="red" />
+            <circle cx="200" cy="140" r="5" fill="green" />
+        </svg>
+        <p><em>Visual 1: Gravitational Potential Energy conversion points along a multi-hill track.</em></p>
+    </div>
+
+    <h3>Energy Types</h3>
+    <ul>
+        <li><strong>Gravitational Potential Energy ($U_g = mgh$):</strong> The energy stored due to the height of the coaster.</li>
+        <li><strong>Kinetic Energy ($K = \frac{1}{2}mv^2$):</strong> The energy of the coaster's actual motion.</li>
+        <li><strong>Internal (Thermal) Energy:</strong> Energy lost to the system via friction and air resistance, usually dissipated as heat.</li>
+    </ul>
+
+    <!-- Visual 2: The Loop-the-Loop -->
+    <div class="visual-box">
+        <svg width="200" height="200">
+            <circle cx="100" cy="100" r="70" fill="none" stroke="#34495e" stroke-width="4" />
+            <line x1="100" y1="100" x2="100" y2="30" stroke="red" stroke-width="2" marker-end="url(#arrow)" />
+            <text x="110" y="60" fill="red">Centripetal Force</text>
+        </svg>
+        <p><em>Visual 2: Forces acting at the apex of a vertical loop.</em></p>
+    </div>
+
+    <h3>Energy Transformations</h3>
+    <p>
+        The transformation begins at the lift hill where electrical work is done to increase GPE. As the coaster drops, GPE transforms into KE. In a loop, KE is traded back for GPE to reach the top, then converted back to KE on the exit.
+    </p>
+
+    <!-- Visual 3: Energy Bar Graphs -->
+    <div class="visual-box">
+        <svg width="300" height="120">
+            <rect x="10" y="10" width="100" height="20" fill="#c0392b" />
+            <text x="120" y="25">Top: 100% PE</text>
+            <rect x="10" y="40" width="50" height="20" fill="#c0392b" />
+            <rect x="60" y="40" width="50" height="20" fill="#27ae60" />
+            <text x="120" y="55">Mid: 50% PE / 50% KE</text>
+            <rect x="10" y="70" width="100" height="20" fill="#27ae60" />
+            <text x="120" y="85">Bottom: 100% KE</text>
+        </svg>
+    </div>
+
+    <h3>Law of Conservation of Energy</h3>
+    <p>
+        The Total Mechanical Energy ($E = K + U$) remains constant in a frictionless environment. In reality, $E_{initial} = K + U + Q$, where $Q$ is heat.
+    </p>
+
+    <!-- Visual 4: Thermal Dissipation -->
+    <div class="visual-box">
+        <svg width="200" height="100">
+            <rect x="50" y="60" width="100" height="10" fill="#7f8c8d" />
+            <path d="M 60 50 Q 70 30 80 50" fill="none" stroke="orange" stroke-width="2" />
+            <path d="M 90 50 Q 100 30 110 50" fill="none" stroke="orange" stroke-width="2" />
+            <path d="M 120 50 Q 130 30 140 50" fill="none" stroke="orange" stroke-width="2" />
+            <text x="75" y="20" fill="orange" font-weight="bold">Friction (Heat)</text>
+        </svg>
+        <p><em>Visual 4: Visualization of kinetic energy being lost as thermal energy.</em></p>
+    </div>
+
+    <h3>Physics Calculation: Minimum Height for a Loop</h3>
+    <p>To complete a vertical loop of radius $R$ without falling, the coaster must have a minimum velocity $v = \sqrt{gR}$ at the top. We calculate the required starting height $H$:</p>
+    <ul>
+        <li>Loop Radius ($R$) = 10 meters</li>
+        <li>Energy at start: $mgh$</li>
+        <li>Energy at top of loop: $mg(2R) + \frac{1}{2}mv^2$</li>
+        <li>Substituting $v^2 = gR$: $mgh = 2mgR + \frac{1}{2}mgR$</li>
+        <li>$mgh = 2.5mgR \rightarrow H = 2.5R$</li>
+        <li>$H = 2.5 \times 10 = \mathbf{25 \text{ meters}}$</li>
+    </ul>
+
+    <!-- Visual 5: Calculation Diagram -->
+    <div class="visual-box">
+        <svg width="300" height="150">
+            <rect x="20" y="20" width="20" height="110" fill="#ecf0f1" stroke="#bdc3c7" />
+            <text x="50" y="75">$H = 2.5R$</text>
+            <circle cx="200" cy="80" r="50" fill="none" stroke="#34495e" stroke-width="2" />
+            <line x1="200" y1="80" x2="200" y2="30" stroke="#c0392b" />
+            <text x="205" y="75" fill="#c0392b">$R$</text>
+        </svg>
+        <p><em>Visual 5: Relationship between hill height and loop radius.</em></p>
+    </div>
+
+    <h3>Reflection</h3>
+    <p style="background-color: #fef9e7; padding: 20px; border-left: 5px solid #f1c40f;">
+        <strong>What was the most interesting thing I learned?</strong> 
+        I found it fascinating how the Law of Conservation of Energy explains why the first hill of a roller coaster must always be the highest. Since energy cannot be created, only transformed, the total energy given to the coaster at the start is all it ever has. Seeing the math show that every subsequent peak must be lower to account for energy lost to friction and air resistance made me realize how "perfect" the engineering has to be.
+    </p>
+
+    <h3>Sources</h3>
+    <ul style="font-size: 0.9em; color: #666;">
+        <li>Britannica: <em>Roller Coaster Physics and Design</em> (britannica.com)</li>
+        <li>Scientific American: <em>How Do Roller Coasters Work?</em> (scientificamerican.com)</li>
+    </ul>
+
+    <button class="btn btn-red" onclick="showSection('car-project')">Next Project: Car Poster</button>
+    <button class="btn btn-blue" onclick="showSection('roller-coaster-poster')">Back to Previous Project</button>
+    <button class="btn btn-gray" onclick="showSection('quiz-section')">Back to Quiz</button>
+</div>
+
+<div id="car-project" class="poster">
+    <h2 class="poster-header-3">Automotive Physics: Energy, Power, and Efficiency</h2>
+    
+    <h3>Introduction</h3>
+    <p>
+        Automobiles are complex systems designed to convert stored energy into controlled motion. Unlike a roller coaster, which relies heavily on gravity, a car must constantly generate force to overcome air resistance and friction. This project analyzes the journey from fuel to motion through the lens of thermodynamics and mechanics.
+    </p>
+
+    <!-- Visual 1: Car Aerodynamics -->
+    <div class="visual-box">
+        <svg width="400" height="120" viewBox="0 0 400 120">
+            <path d="M 50 100 L 350 100 M 80 100 Q 80 40 150 40 L 250 40 Q 320 40 320 100" fill="#bdc3c7" stroke="#2c3e50" stroke-width="3"/>
+            <path d="M 10 30 Q 100 25 150 35 T 380 40" fill="none" stroke="#3498db" stroke-width="2" stroke-dasharray="5,5"/>
+            <path d="M 10 50 Q 100 45 150 55 T 380 60" fill="none" stroke="#3498db" stroke-width="2" stroke-dasharray="5,5"/>
+            <text x="300" y="30" font-size="12" fill="#3498db">Air Resistance (Drag)</text>
+        </svg>
+        <p><em>Visual 1: Aerodynamic drag forces acting against the car's forward motion.</em></p>
+    </div>
+
+    <h3>Energy Types</h3>
+    <ul>
+        <li><strong>Chemical Potential Energy:</strong> Stored in the molecular bonds of gasoline or within lithium-ion battery cells.</li>
+        <li><strong>Kinetic Energy:</strong> The energy of the car's mass in motion ($K = \frac{1}{2}mv^2$).</li>
+        <li><strong>Thermal Energy:</strong> The largest byproduct of combustion; most fuel energy is lost as heat through the radiator and exhaust.</li>
+        <li><strong>Sound Energy:</strong> Vibrations produced by the engine and tires.</li>
+    </ul>
+
+    <!-- Visual 2: Piston Cycle -->
+    <div class="visual-box">
+        <svg width="150" height="150">
+            <rect x="40" y="20" width="70" height="100" fill="none" stroke="#333" stroke-width="3"/>
+            <rect x="45" y="60" width="60" height="40" fill="#e74c3c"/>
+            <circle cx="75" cy="40" r="10" fill="orange">
+                <animate attributeName="r" values="5;15;5" dur="1s" repeatCount="indefinite" />
+            </circle>
+            <text x="55" y="140" font-size="10">Chemical ➔ Thermal</text>
+        </svg>
+        <p><em>Visual 2: Combustion in the cylinder converting chemical energy to pressure and heat.</em></p>
+    </div>
+
+    <h3>Energy Transformations</h3>
+    <p>
+        In a gas car: <strong>Chemical Energy</strong> (Fuel) ➔ <strong>Thermal Energy</strong> (Combustion) ➔ <strong>Mechanical/Kinetic Energy</strong> (Pistons/Wheels). 
+        In an electric car: <strong>Chemical Energy</strong> (Battery) ➔ <strong>Electrical Energy</strong> ➔ <strong>Kinetic Energy</strong> (Motor).
+    </p>
+
+    <!-- Visual 3: Efficiency Pie Chart -->
+    <div class="visual-box">
+        <svg width="200" height="200">
+            <circle cx="100" cy="100" r="80" fill="#e74c3c" />
+            <path d="M 100 100 L 100 20 A 80 80 0 0 1 170 140 Z" fill="#27ae60" />
+            <text x="110" y="80" font-size="12" fill="white">Motion (25%)</text>
+            <text x="40" y="130" font-size="12" fill="white">Heat Loss (75%)</text>
+        </svg>
+        <p><em>Visual 3: Typical energy breakdown of an internal combustion engine.</em></p>
+    </div>
+
+    <h3>Law of Conservation of Energy</h3>
+    <p>
+        The energy in the fuel must equal the sum of all other energies: 
+        $E_{fuel} = KE_{motion} + Heat_{engine} + Heat_{braking} + Work_{drag}$. Energy is never destroyed; it is simply degraded into less useful forms (mostly heat).
+    </p>
+
+    <!-- Visual 4: Braking Energy -->
+    <div class="visual-box">
+        <svg width="200" height="120">
+            <circle cx="100" cy="60" r="40" fill="#95a5a6" stroke="#333" stroke-width="4"/>
+            <rect x="130" y="40" width="20" height="40" fill="#c0392b" />
+            <text x="75" y="115" font-size="10">KE ➔ Thermal (Friction)</text>
+        </svg>
+        <p><em>Visual 4: Disc brakes converting kinetic energy into heat to stop the car.</em></p>
+    </div>
+
+    <h3>Physics Calculation: Work to Reach Highway Speed</h3>
+    <p>Calculate the work required to accelerate a 1,600 kg car from rest to 100 km/h (approx. 27.8 m/s):</p>
+    <ul>
+        <li>Mass ($m$) = 1,600 kg</li>
+        <li>Velocity ($v$) = 27.8 m/s</li>
+        <li>Formula: $W = \Delta K = \frac{1}{2}mv^2$</li>
+        <li>$W = 0.5 \times 1,600 \times (27.8)^2$</li>
+        <li>$W = 800 \times 772.84$</li>
+        <li>$W = \mathbf{618,272 \text{ Joules}}$</li>
+        <li>If this takes 8 seconds, the Power ($P$) required is $W / t \approx \mathbf{77.3 \text{ kW}}$ (approx. 104 Horsepower).</li>
+    </ul>
+
+    <!-- Visual 5: Vector Diagram -->
+    <div class="visual-box">
+        <svg width="300" height="100">
+            <line x1="150" y1="50" x2="250" y2="50" stroke="#27ae60" stroke-width="4" marker-end="url(#arrow)" />
+            <line x1="150" y1="50" x2="80" y2="50" stroke="#c0392b" stroke-width="4" marker-end="url(#arrow)" />
+            <text x="200" y="40" fill="#27ae60">Drive Force</text>
+            <text x="60" y="40" fill="#c0392b">Friction/Drag</text>
+        </svg>
+        <p><em>Visual 5: Balanced and unbalanced forces during acceleration.</em></p>
+    </div>
+
+    <h3>Reflection</h3>
+    <p style="background-color: #f4f4f4; padding: 20px; border-left: 5px solid #c0392b;">
+        <strong>What was the most interesting thing I learned?</strong> 
+        I was shocked to learn how inefficient traditional cars actually are. Learning that nearly 75-80% of the energy in gasoline is simply wasted as heat through the exhaust and radiator really makes you realize why electric motors (which are over 90% efficient) are such a massive technological leap. It turns out a car is more of a "traveling heater" that happens to move as a side effect!
+    </p>
+
+    <h3>Sources</h3>
+    <ul style="font-size: 0.9em; color: #666;">
+        <li>U.S. Department of Energy: <em>Where the Energy Goes: Gasoline Vehicles</em> (fueleconomy.gov)</li>
+        <li>Engineering Toolbox: <em>Force of Drag on a Vehicle</em> (engineeringtoolbox.com)</li>
+    </ul>
+
+    <button class="btn btn-orange" onclick="showSection('roller-coaster-poster-2')">Back to Previous Poster</button>
+    <button class="btn btn-gray" onclick="showSection('quiz-section')">Back to Quiz</button>
+</div>
+
+<script>
+    const questions = [
+        { q: "Which organelle is known as the 'powerhouse' of the cell?", a: ["Nucleus", "Ribosome", "Mitochondria", "Chloroplast"], c: 2 },
+        { q: "What is the primary site of photosynthesis in plants?", a: ["Mitochondria", "Chloroplast", "Golgi apparatus", "Vacuole"], c: 1 },
+        { q: "Which molecule carries genetic information?", a: ["ATP", "DNA", "Glucose", "Hemoglobin"], c: 1 },
+        { q: "In which phase of mitosis do chromosomes align in the center of the cell?", a: ["Prophase", "Metaphase", "Anaphase", "Telophase"], c: 1 },
+        { q: "How many chromosomes are in a normal human somatic cell?", a: ["23", "44", "46", "48"], c: 2 },
+        { q: "Which nitrogenous base is found in RNA but not in DNA?", a: ["Adenine", "Thymine", "Cytosine", "Uracil"], c: 3 },
+        { q: "What is the smallest unit of life?", a: ["Atom", "Molecule", "Cell", "Tissue"], c: 2 },
+        { q: "Which protein in red blood cells binds to oxygen?", a: ["Insulin", "Hemoglobin", "Keratin", "Collagen"], c: 1 },
+        { q: "What process produces four genetically diverse haploid cells?", a: ["Mitosis", "Binary Fission", "Meiosis", "Fertilization"], c: 2 },
+        { q: "Who is considered the father of modern genetics?", a: ["Charles Darwin", "Gregor Mendel", "Louis Pasteur", "James Watson"], c: 1 },
+        { q: "What type of bond holds two strands of DNA together?", a: ["Ionic bond", "Covalent bond", "Hydrogen bond", "Metallic bond"], c: 2 },
+        { q: "Which domain of life includes organisms with a nucleus?", a: ["Bacteria", "Archaea", "Eukarya", "Monera"], c: 2 },
+        { q: "What is the main function of ribosomes?", a: ["Energy production", "Lipid synthesis", "Protein synthesis", "Waste disposal"], c: 2 },
+        { q: "Which enzyme unzips the DNA double helix during replication?", a: ["DNA Polymerase", "Ligase", "Helicase", "Primase"], c: 2 },
+        { q: "An organism's physical appearance is its...", a: ["Genotype", "Phenotype", "Allele", "Locus"], c: 1 },
+        { q: "Which process creates ATP in the absence of oxygen?", a: ["Aerobic respiration", "Fermentation", "Krebs Cycle", "Electron Transport Chain"], c: 1 },
+        { q: "What is the movement of water across a semi-permeable membrane called?", a: ["Diffusion", "Active Transport", "Osmosis", "Endocytosis"], c: 2 },
+        { q: "Which organ system is responsible for filtering blood and producing urine?", a: ["Digestive", "Circulatory", "Urinary", "Endocrine"], c: 2 },
+        { q: "The 'survival of the fittest' is a core concept of...", a: ["Genetic drift", "Artificial selection", "Natural selection", "Mutation"], c: 2 },
+        { q: "What is the basic building block of proteins?", a: ["Monosaccharides", "Nucleotides", "Amino acids", "Fatty acids"], c: 2 },
+        { q: "Which hormone regulates blood sugar levels?", a: ["Adrenaline", "Estrogen", "Insulin", "Thyroxine"], c: 2 },
+        { q: "What is the function of the xylem in plants?", a: ["Transport sugar", "Transport water", "Support flowers", "Photosynthesis"], c: 1 },
+        { q: "A relationship where both species benefit is called...", a: ["Parasitism", "Commensalism", "Mutualism", "Competition"], c: 2 },
+        { q: "Which part of the brain controls balance and coordination?", a: ["Cerebrum", "Cerebellum", "Medulla Oblongata", "Thalamus"], c: 1 },
+        { q: "What is the main byproduct of photosynthesis?", a: ["Carbon Dioxide", "Glucose", "Oxygen", "Water"], c: 2 },
+        { q: "Which blood type is known as the universal donor?", a: ["A+", "B-", "AB+", "O-"], c: 3 },
+        { q: "What is the study of fungi called?", a: ["Botany", "Zoology", "Mycology", "Phycology"], c: 2 },
+        { q: "Which gas is most abundant in the Earth's atmosphere?", a: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Argon"], c: 2 },
+        { q: "What are the vestigial structures?", a: ["Structures with no current function", "Modified limbs", "Respiratory organs", "Reproductive parts"], c: 0 },
+        { q: "Which ecosystem has the highest biodiversity?", a: ["Desert", "Tundra", "Tropical Rainforest", "Grassland"], c: 2 },
+        { q: "What is the function of lysosomes?", a: ["Synthesize DNA", "Break down waste", "Produce energy", "Sort proteins"], c: 1 },
+        { q: "Which scientist proposed the theory of evolution by natural selection?", a: ["Alfred Wallace", "Jean-Baptiste Lamarck", "Charles Darwin", "Both A and C"], c: 3 },
+        { q: "What is the pH of pure water?", a: ["0", "5", "7", "14"], c: 2 },
+        { q: "Which organelle sorts and packages proteins?", a: ["Endoplasmic Reticulum", "Golgi Apparatus", "Ribosome", "Nucleolus"], c: 1 },
+        { q: "A change in the DNA sequence is called a...", a: ["Translation", "Transcription", "Mutation", "Replication"], c: 2 },
+        { q: "Which vitamin is synthesized by the skin when exposed to sunlight?", a: ["Vitamin A", "Vitamin B12", "Vitamin C", "Vitamin D"], c: 3 },
+        { q: "What are prokaryotes characterized by?", a: ["Lack of a nucleus", "Presence of mitochondria", "Multicellularity", "Complex organelles"], c: 0 },
+        { q: "The process of mRNA being read to create a protein is called...", a: ["Transcription", "Translation", "Transformation", "Transduction"], c: 1 },
+        { q: "Which structure prevents food from entering the trachea?", a: ["Pharynx", "Larynx", "Epiglottis", "Esophagus"], c: 2 },
+        { q: "In genetics, what does 'homozygous' mean?", a: ["Two different alleles", "Two identical alleles", "One dominant allele", "One recessive allele"], c: 1 },
+        { q: "Which part of the flower receives pollen?", a: ["Anther", "Stigma", "Style", "Ovary"], c: 1 },
+        { q: "What is the main component of plant cell walls?", a: ["Chitin", "Peptidoglycan", "Cellulose", "Starch"], c: 2 },
+        { q: "Which process occurs in the cytoplasm of the cell?", a: ["Glycolysis", "Krebs Cycle", "DNA Replication", "Transcription"], c: 0 },
+        { q: "What is the primary function of white blood cells?", a: ["Oxygen transport", "Clotting", "Immune defense", "Nutrient transport"], c: 2 },
+        { q: "Which biome is characterized by permafrost?", a: ["Taiga", "Savanna", "Tundra", "Chaparral"], c: 2 },
+        { q: "What type of macromolecule are enzymes?", a: ["Carbohydrates", "Lipids", "Proteins", "Nucleic acids"], c: 2 },
+        { q: "Which element is the 'backbone' of organic molecules?", a: ["Oxygen", "Hydrogen", "Carbon", "Nitrogen"], c: 2 },
+        { q: "How many heart chambers do mammals have?", a: ["2", "3", "4", "5"], c: 2 },
+        { q: "What is an allele?", a: ["A type of cell", "A version of a gene", "A protein", "A chromosome part"], c: 1 },
+        { q: "The sum of all chemical reactions in an organism is called...", a: ["Homeostasis", "Metabolism", "Anabolism", "Catabolism"], c: 1 }
+    ];
+
+    function loadQuestions() {
+        const container = document.getElementById('questions-container');
+        questions.forEach((item, index) => {
+            const block = document.createElement('div');
+            block.className = 'question-block';
+            
+            const qText = document.createElement('div');
+            qText.className = 'question-text';
+            qText.innerText = `${index + 1}. ${item.q}`;
+            block.appendChild(qText);
+            
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options';
+            
+            item.a.forEach((opt, optIndex) => {
+                const label = document.createElement('label');
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = `q${index}`;
+                radio.value = optIndex;
+                
+                label.appendChild(radio);
+                label.appendChild(document.createTextNode(opt));
+                optionsDiv.appendChild(label);
+            });
+            
+            block.appendChild(optionsDiv);
+            container.appendChild(block);
+        });
+    }
+
+    function calculateScore() {
+        let score = 0;
+        const form = document.getElementById('quiz-form');
+        
+        questions.forEach((item, index) => {
+            const selected = form.elements[`q${index}`].value;
+            if (selected == item.c) score++;
+        });
+        
+        const percent = (score / questions.length) * 100;
+
+        if (percent >= 50) {
+            document.getElementById('final-score-display').innerHTML = `Final Score: <strong>${score}/${questions.length} (${percent}%)</strong>`;
+            showSection('success-section');
+        } else {
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'wrong-answer';
+            resultDiv.innerHTML = `You scored ${score} out of ${questions.length} (${percent}%).<br>You need at least 50% to see the projects. Keep studying!`;
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+    }
+
+    /**
+     * Navigates between quiz, success, and posters
+     */
+    function showSection(sectionId) {
+        const sections = ['quiz-section', 'success-section', 'roller-coaster-poster', 'roller-coaster-poster-2', 'car-project'];
+        sections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.style.display = (id === sectionId) ? 'block' : 'none';
+        });
+        window.scrollTo(0, 0);
+    }
+
+    // Cheat code listener: typing 'skip' automatically completes the test perfectly
+    let inputSequence = "";
+    window.addEventListener('keydown', (e) => {
+        // Filter for letter keys to avoid meta keys breaking the string
+        if (e.key.length === 1) {
+            inputSequence += e.key.toLowerCase();
+            if (inputSequence.endsWith("skip")) {
+                questions.forEach((q, i) => {
+                    const options = document.getElementsByName(`q${i}`);
+                    if (options[q.c]) options[q.c].checked = true;
+                });
+                calculateScore();
+                inputSequence = "";
+            }
+            if (inputSequence.length > 10) inputSequence = inputSequence.slice(-10);
+        }
+    });
+
+    window.onload = loadQuestions;
+</script>
+
+</body>
+</html>
